@@ -1,6 +1,6 @@
 #include "HW_gpio.h"
 #include "GPIO_I2C.h"
-
+#include "SysCtrl.h"
 
 void GPIO_I2C1(void){
 //test mode

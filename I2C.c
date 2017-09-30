@@ -1,6 +1,7 @@
 #include "I2C.h"
 #include "HW_I2C.h"
 #include "GPIO_I2C.h"
+#include "SysCtrl.h"
 
 //! I2C Setup modes MASTER and SLAVE
 //MASTER Mode.
@@ -14,10 +15,10 @@ I2CMCR|=0x00000010;
 //calculate the SCL period at a speed of 100kbps at 20 MHZ.
 /***************SCL period calculation.*****************
 TPR = (System Clock/(2*(SCL_LP + SCL_HP)*SCL_CLK))-1;  *
-TPR = (20MHz/(2*(6+4)*100000))-1;                      *
-TPR = 9                                                *
+TPR = (16MHz/(2*(6+4)*400000))-1;                      *
+TPR = 1                                                *
 *******************************************************/	
-I2CMTPR|=0x09;
+I2CMTPR|=0x01;
 //write slave addresse 7bit and R/W bit.
 I2CMSA=0x3B;
 //Set RUN bit to make MASTER TX and RX.
